@@ -1,4 +1,4 @@
-package org.example;
+package ru.netology.movies;
 
 public class Main {
     public static void main(String[] args) {
