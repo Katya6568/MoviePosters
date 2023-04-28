@@ -89,4 +89,56 @@ public class PostersManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void shouldAddMoviesIfFive() {
+        PostersManager manager = new PostersManager(5);
+        manager.addMovie("Буратино");
+        manager.addMovie("Вулканы");
+        manager.addMovie("Ложный след");
+        manager.addMovie("Пираты");
+        manager.addMovie("Любовь");
+
+        manager.findAll();
+
+        String[] expected = {"Буратино", "Вулканы", "Ложный след", "Пираты",  "Любовь"};
+        String[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldAddMoviesIfThree() {
+        PostersManager manager = new PostersManager();
+
+        manager.addMovie("Ложный след");
+        manager.addMovie("Пираты");
+        manager.addMovie("Любовь");
+
+        manager.findAll();
+
+        String[] expected = {"Ложный след", "Пираты", "Любовь"};
+        String[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldAddMoviesIfSeven() {
+        PostersManager manager = new PostersManager(7);
+
+        manager.addMovie("Ложный след");
+        manager.addMovie("Пираты");
+        manager.addMovie("Любовь");
+        manager.addMovie("Кошки");
+        manager.addMovie("Майкл");
+        manager.addMovie("100 обещаний");
+        manager.addMovie("Буратино");
+
+        manager.findAll();
+
+        String[] expected = {"Ложный след", "Пираты", "Любовь", "Кошки", "Майкл", "100 обещаний", "Буратино"};
+        String[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
