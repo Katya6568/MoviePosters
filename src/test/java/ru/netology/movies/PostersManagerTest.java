@@ -89,6 +89,7 @@ public class PostersManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldAddMoviesIfFive() {
         PostersManager manager = new PostersManager(5);
@@ -100,7 +101,7 @@ public class PostersManagerTest {
 
         manager.findAll();
 
-        String[] expected = {"Буратино", "Вулканы", "Ложный след", "Пираты",  "Любовь"};
+        String[] expected = {"Буратино", "Вулканы", "Ложный след", "Пираты", "Любовь"};
         String[] actual = manager.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -138,6 +139,58 @@ public class PostersManagerTest {
 
         String[] expected = {"Ложный след", "Пираты", "Любовь", "Кошки", "Майкл", "100 обещаний", "Буратино"};
         String[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindLastMoviesEqualToLimit() {
+        PostersManager manager = new PostersManager(4);
+        manager.addMovie("Буратино");
+        manager.addMovie("Вулканы");
+        manager.addMovie("Ложный след");
+        manager.addMovie("Пираты");
+
+        manager.findLast();
+
+        String[] expected = {"Пираты", "Ложный след", "Вулканы", "Буратино"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindLastMoviesUnderLimit() {
+        PostersManager manager = new PostersManager(6);
+        manager.addMovie("Буратино");
+        manager.addMovie("Вулканы");
+        manager.addMovie("Ложный след");
+        manager.addMovie("Пираты");
+        manager.addMovie("Любовь");
+
+
+        manager.findLast();
+
+        String[] expected = {"Любовь", "Пираты", "Ложный след", "Вулканы", "Буратино"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindLastMoviesOverLimit() {
+        PostersManager manager = new PostersManager(6);
+        manager.addMovie("Буратино");
+        manager.addMovie("Вулканы");
+        manager.addMovie("Ложный след");
+        manager.addMovie("Пираты");
+        manager.addMovie("Любовь");
+        manager.addMovie("Тайна сокровищ");
+
+        manager.findLast();
+
+        String[] expected = {"Тайна сокровищ", "Любовь", "Пираты", "Ложный след", "Вулканы", "Буратино"};
+        String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
