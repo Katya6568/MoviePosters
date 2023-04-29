@@ -186,10 +186,11 @@ public class PostersManagerTest {
         manager.addMovie("Пираты");
         manager.addMovie("Любовь");
         manager.addMovie("Тайна сокровищ");
+        manager.addMovie("Майкл");
 
         manager.findLast();
 
-        String[] expected = {"Тайна сокровищ", "Любовь", "Пираты", "Ложный след", "Вулканы", "Буратино"};
+        String[] expected = {"Майкл", "Тайна сокровищ", "Любовь", "Пираты", "Ложный след", "Вулканы"};
         String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
